@@ -1,3 +1,1 @@
-import play_hangman
-
-play_hangman.play_hangman()
+import process_int

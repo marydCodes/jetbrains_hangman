@@ -20,10 +20,10 @@ def play_hangman():
     w = "-" * len(tgt_word)
     print(w)
 
-    tries = 0
-    while tries < 8:
+    lives = 8
+    store_guesses = []
+    while lives > 0:
         guess = input("Input a letter: ")
-        print("\n")
 
         if guess in tgt_word:
             wl = list(w)
@@ -31,12 +31,17 @@ def play_hangman():
             for i in idxs:
                 wl[i] = guess
             w = ''.join(wl)
+            print("\n")
             print(w)
         else:
             print("That letter doesn't appear in the word.")
-        tries += 1
+            print("\n")
+            print(w)
+            lives -= 1
     
     print('''
+You have no more lives left.
+
 Thanks for playing! 
 We'll see how well you did in the next stage''')
 
@@ -75,3 +80,4 @@ def rand_word_hint():
 # guess_sgl_word()
 # rand_word()
 # rand_word_hint()
+play_hangman()
