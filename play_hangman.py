@@ -13,19 +13,25 @@ def find_all(a_str, sub):
         yield start
         start += len(sub) # use start += 1 to find overlapping matches
 
+# game code
 def play_hangman():
-    list_ = ['mississippi']
-    tgt_word = random.choice(list_)
-    tgt_len = len(tgt_word)
-    print("-" * tgt_len)
+    list_ = ['python', 'java', 'kotlin', 'javascript']             # list of words to choose from
+    tgt_word = random.choice(list_)     # randomly choose a word
+    w = "-" * len(tgt_word)
+    print(w)
 
     tries = 0
     while tries < 8:
-        guess = input("Guess a letter: ")
+        guess = input("Input a letter: ")
+        print("\n")
 
         if guess in tgt_word:
+            wl = list(w)
             idxs = list(find_all(tgt_word, guess))
-            print(f"Your guess appears at these places in the word: {idxs}.")
+            for i in idxs:
+                wl[i] = guess
+            w = ''.join(wl)
+            print(w)
         else:
             print("That letter doesn't appear in the word.")
         tries += 1
@@ -69,4 +75,3 @@ def rand_word_hint():
 # guess_sgl_word()
 # rand_word()
 # rand_word_hint()
-play_hangman()
