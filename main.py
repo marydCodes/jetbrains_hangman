@@ -1,1 +1,1 @@
-import process_int
+import play_hangman

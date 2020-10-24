@@ -15,7 +15,7 @@ def find_all(a_str, sub):
 
 # game code
 def play_hangman():
-    list_ = ['python', 'java', 'kotlin', 'javascript']             # list of words to choose from
+    list_ = ['java']             # list of words to choose from
     tgt_word = random.choice(list_)     # randomly choose a word
     w = "-" * len(tgt_word)
     print(w)
@@ -26,13 +26,20 @@ def play_hangman():
         guess = input("Input a letter: ")
 
         if guess in tgt_word:
-            wl = list(w)
-            idxs = list(find_all(tgt_word, guess))
-            for i in idxs:
-                wl[i] = guess
-            w = ''.join(wl)
-            print("\n")
-            print(w)
+            if guess in store_guesses:
+                print("No improvements")
+                print("\n")
+                print(w)
+                lives -= 1
+            else:
+                wl = list(w)
+                idxs = list(find_all(tgt_word, guess))
+                for i in idxs:
+                    wl[i] = guess
+                w = ''.join(wl)
+                print("\n")
+                print(w)
+                store_guesses.append(guess)
         else:
             print("That letter doesn't appear in the word.")
             print("\n")
