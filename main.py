@@ -1,1 +1,1 @@
-import process_int
+import better_hangman
