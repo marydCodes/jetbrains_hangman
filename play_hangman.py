@@ -1,9 +1,5 @@
 import random
 
-# opening
-print('''H A N G M A N
-''')
-
 # supplementary function
 def find_all(a_str, sub):
     start = 0
@@ -15,21 +11,22 @@ def find_all(a_str, sub):
 
 # game code
 def play_hangman():
+    # opening
+    print("H A N G M A N")
+
     list_ = ['python', 'java', 'kotlin', 'javascript']
+    # list_ = ['java']
     tgt_word = random.choice(list_)     # randomly choose a word
     hint = "-" * len(tgt_word)
     print(hint)
 
     lives = 8
-    store_guesses = []
     while lives > 0:
         guess = input("Input a letter: ")
 
         if guess in tgt_word:
-            if guess in store_guesses:
+            if guess in hint:
                 print("No improvements")
-                print("\n")
-                print(hint)
                 lives -= 1
             else:
                 hint_list = list(hint)
@@ -37,19 +34,11 @@ def play_hangman():
                 for i in idxs:
                     hint_list[i] = guess
                 hint = ''.join(hint_list)
-                print("\n")
                 print(hint)
-                store_guesses.append(guess)
         else:
             print("That letter doesn't appear in the word.")
-            print("\n")
-            print(hint)
             lives -= 1
-    
-    print('''
-You have no more lives left.
-
-Thanks for playing! 
-We'll see how well you did in the next stage''')
+    else:
+        print("You lost!")
 
 play_hangman()

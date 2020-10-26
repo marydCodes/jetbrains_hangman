@@ -1,1 +1,1 @@
-import play_hangman
+import better_hangman
