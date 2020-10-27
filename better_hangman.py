@@ -1,12 +1,14 @@
 import random
 import string
 
+# opening
+print("H A N G M A N")
+play = str(input("Type 'play' to play the game, 'exit' to quit: "))
+
 tgt_word = random.choice(['python', 'java', 'kotlin', 'javascript'])
 hint = list('-' * len(tgt_word))
 lives = 8
 store_guesses = set()
-
-print('H A N G M A N')
 
 while lives > 0:
     print()
